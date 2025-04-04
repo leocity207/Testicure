@@ -7,13 +7,23 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 FILES_NAME = ["requirement.xml", "test-case.xml", "test-dimension.xml", "test.xml"]
-RESOURCE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "resources")
+CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
+RESOURCE_PATH = os.path.join(CURRENT_PATH, "resources")
+
 # Parse XML file
 
 class CustomHandler(BaseHTTPRequestHandler):
 	def do_GET(self):
 		file_path = os.path.join(RESOURCE_PATH, self.path.lstrip("/"))
 		if os.path.isfile(file_path):
+			self.send_response(200)
+			mime_type, _ = mimetypes.guess_type(file_path)
+			self.send_header("Content-type", mime_type or "application/octet-stream")
+			self.end_headers()
+			with open(file_path, "rb") as file:
+				self.wfile.write(file.read())
+		elif(self.path[0:5] == "/file"):
+			file_path = os.path.join(os.path.join(CURRENT_PATH,Get_Config()["RelativePath"]),self.path[6:])
 			self.send_response(200)
 			mime_type, _ = mimetypes.guess_type(file_path)
 			self.send_header("Content-type", mime_type or "application/octet-stream")

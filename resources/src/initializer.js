@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = new App_Container();
     document.body.appendChild(container);
 
-    container.addApp(new Requirement_App());
-    container.addApp(new Test_Case_App());
-    container.addApp(new Parameter_App());
-    container.addApp(new Test_App());
+    container.Add_App(new Requirement_App());
+    container.Add_App(new Test_Case_App());
+    container.Add_App(new Parameter_App());
+    container.Add_App(new Test_App());
 });
