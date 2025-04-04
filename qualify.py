@@ -27,8 +27,8 @@ class CustomHandler(BaseHTTPRequestHandler):
 # Main function to process XML files and generate HTML
 if __name__ == "__main__":
 	config = Get_Config()
-	server_address = ('', 8000)
+	server_address = ('', 8888)
 	httpd = HTTPServer(server_address, CustomHandler)
-	print("Serving on port 8000...")
+	print("Serving on port 8888...")
 	httpd.serve_forever()
 	

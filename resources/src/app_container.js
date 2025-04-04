@@ -2,16 +2,20 @@ class App_Container extends HTMLDivElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
-        this.apps = [];
-        this.activeApp = null;
+        this.m_apps = [];
+        this.m_activeApp = null;
 
-        this.sidebar = document.createElement("div");
-        this.sidebar.classList.add("sidebar");
+        this.m_main_container = document.createElement("div");
+        this.m_main_container.classList.add("app-container");
+
+        this.m_sidebar = document.createElement("div");
+        this.m_sidebar.classList.add("sidebar");
         
-        this.displayArea = document.createElement("div");
-        this.displayArea.classList.add("display-area");
+        this.m_displayArea = document.createElement("div");
+        this.m_displayArea.classList.add("display-area");
         
-        this.shadowRoot.append(this.sidebar, this.displayArea);
+        this.m_main_container.append(this.m_sidebar, this.m_displayArea);
+        this.shadowRoot.append(this.m_main_container);
         
         const style = document.createElement("link");
         style.rel = "stylesheet";
@@ -20,22 +24,22 @@ class App_Container extends HTMLDivElement {
     }
 
     addApp(app) {
-        this.apps.push(app);
+        this.m_apps.push(app);
         const iconElement = document.createElement("div");
         iconElement.classList.add("app-icon");
         iconElement.appendChild(app.getIcon());
         iconElement.addEventListener("click", () => this.showApp(app));
-        this.sidebar.appendChild(iconElement);
+        this.m_sidebar.appendChild(iconElement);
 
-        if (!this.activeApp) {
+        if (!this.m_activeApp) {
             this.showApp(app);
         }
     }
 
     showApp(app) {
-        this.displayArea.innerHTML = "";
-        this.displayArea.appendChild(app);
-        this.activeApp = app;
+        this.m_displayArea.innerHTML = "";
+        this.m_displayArea.appendChild(app);
+        this.m_activeApp = app;
     }
 }
 

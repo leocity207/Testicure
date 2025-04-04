@@ -3,8 +3,12 @@ class App extends HTMLDivElement {
         super();
         this.classList.add("app");
         this.dataset.name = name;
-        this.icon = icon;
-        this.content = content;
+        this.m_content = content;
+
+        this.m_icon = document.createElement("iframe");
+        this.m_icon.src = './image/' + icon;
+        this.m_icon.width = '100%';
+        this.m_icon.height = '100%';
         
         this.render();
     }
@@ -14,7 +18,8 @@ class App extends HTMLDivElement {
     }
 
     getIcon() {
-        return this.icon.cloneNode(true);
+        //return this.icon.cloneNode(true);
+        return  this.m_icon;
     }
 }
 
