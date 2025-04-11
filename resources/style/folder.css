@@ -1,0 +1,30 @@
+.title {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #0056b3;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	padding: 0.5rem 0;
+}
+  
+.title::before {
+	content: '▶'; /* Right arrow when collapsed */
+	display: inline-block;
+	margin-right: 0.5rem;
+	transition: transform 0.2s ease;
+}
+  
+:host(:not(.collapsed)) .title::before {
+	content: '▼'; /* Down arrow when expanded */
+}
+  
+.content {
+	padding-left: 1rem;
+	margin-bottom: 1rem;
+}
+  
+:host(.collapsed) .content {
+	display: none;
+}
+  

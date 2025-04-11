@@ -1,0 +1,9 @@
+.choice {
+	padding: 0.25rem 0.5rem;
+	background-color: #e3f2fd;
+	border: 1px solid #90caf9;
+	border-radius: 3px;
+	font-size: 0.9rem;
+	cursor: default;
+}
+  
