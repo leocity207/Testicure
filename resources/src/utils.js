@@ -2,7 +2,7 @@
 /**
  * General Scope for utilitary function
  */
-class Utils {
+export default class Utils {
 	static Fetch_Resource = async (endpoint) =>
 	{
 		try {
@@ -19,6 +19,27 @@ class Utils {
 			throw error; // Re-throw the error for further handling
 		}
 	}
-}
 
-export default Utils
+	static GenerateNewId(prefix = 'R') {
+		const allElements = document.querySelectorAll(`${prefix.toLowerCase()}-div[id]`);
+		let maxId = 0;
+		allElements.forEach(el => {
+			const id = parseInt(el.getAttribute('id')?.replace(/\D/g, ''));
+			if (!isNaN(id) && id > maxId) maxId = id;
+		});
+		return `${prefix}${maxId + 1}`;
+	}
+
+	static SerializeXML(rootEl) {
+		const serializer = new XMLSerializer();
+		return serializer.serializeToString(rootEl);
+	}
+
+	static AddCSS(node, filename) {
+		const link = document.createElement('link');
+		link.setAttribute('rel', 'stylesheet');
+		link.setAttribute('href', '/styles/' + filename);
+		node.appendChild(link);
+		return link;
+	}
+}

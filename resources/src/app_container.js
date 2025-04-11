@@ -1,4 +1,4 @@
-class App_Container extends HTMLDivElement {
+export default class App_Container extends HTMLDivElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: "open" });
@@ -45,5 +45,3 @@ class App_Container extends HTMLDivElement {
 }
 
 customElements.define("app-container", App_Container, { extends: "div" });
-
-export default App_Container;

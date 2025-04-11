@@ -1,3 +1,5 @@
+import Utils from "../utils";
+
 export default class TestDiv extends HTMLElement {
 	constructor() {
 		super();
@@ -14,9 +16,8 @@ export default class TestDiv extends HTMLElement {
 		content.classList.add('content');
 		content.innerHTML = `<slot></slot>`; // for inner <Dimension-div> and text
 
-		const styleLink = document.createElement('link');
-		styleLink.setAttribute('rel', 'stylesheet');
-		styleLink.setAttribute('href', '/styles/test.css');
+		Utils.AddCSS(this.shadowRoot,"common.css");
+		Utils.AddCSS(this.shadowRoot,"test.css");
 
 		header.addEventListener('click', () => {
 			wrapper.classList.toggle('collapsed');
@@ -24,7 +25,7 @@ export default class TestDiv extends HTMLElement {
 
 		wrapper.appendChild(header);
 		wrapper.appendChild(content);
-		this.shadowRoot.append(styleLink, wrapper);
+		this.shadowRoot.append(wrapper);
 	}
 }
 

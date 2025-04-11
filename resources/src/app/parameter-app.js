@@ -1,7 +1,7 @@
 import App from "./App.js";
 import Utils from "../utils.js";
 
-class Parameter_App extends App {
+export default class Parameter_App extends App {
 
 	constructor(){
 		super("parameter-app","parameter.svg");
@@ -12,5 +12,3 @@ class Parameter_App extends App {
 }
 
 customElements.define("parameter-app", Parameter_App, { extends: "div" });
-
-export default Parameter_App;

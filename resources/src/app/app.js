@@ -1,4 +1,4 @@
-class App extends HTMLDivElement {
+export default class App extends HTMLDivElement {
 	constructor(name, icon) {
 		super();
 		this.classList.add("app");
@@ -27,5 +27,3 @@ class App extends HTMLDivElement {
 }
 
 customElements.define("custom-app", App, { extends: "div" });
-
-export default App;

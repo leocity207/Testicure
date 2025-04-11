@@ -1,3 +1,5 @@
+import Utils
+ from "../utils";
 export default class ChoiceDiv extends HTMLElement {
 	constructor() {
 		super();
@@ -6,12 +8,11 @@ export default class ChoiceDiv extends HTMLElement {
 		const wrapper = document.createElement('div');
 		wrapper.classList.add('choice');
 		wrapper.textContent = this.getAttribute('name');
-
-		const styleLink = document.createElement('link');
-		styleLink.setAttribute('rel', 'stylesheet');
-		styleLink.setAttribute('href', '/styles/choice.css');
-
-		this.shadowRoot.append(styleLink, wrapper);
+		
+		Utils.AddCSS(this.shadowRoot,"choice.css");
+		Utils.AddCSS(this.shadowRoot,"common.css");
+		
+		this.shadowRoot.append(wrapper);
 	}
 }
 

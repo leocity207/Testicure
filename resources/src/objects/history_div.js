@@ -1,3 +1,5 @@
+import Utils from "../utils";
+
 export default class HistoryDiv extends HTMLElement {
 	constructor() {
 		super();
@@ -14,12 +16,11 @@ export default class HistoryDiv extends HTMLElement {
 		content.classList.add('content');
 		content.innerHTML = `<slot></slot>`;
 
-		const styleLink = document.createElement('link');
-		styleLink.rel = 'stylesheet';
-		styleLink.href = '/styles/history.css';
+		Utils.AddCSS(this.shadowRoot,"common.css");
+		Utils.AddCSS(this.shadowRoot,"history.css");
 
 		wrapper.append(title, content);
-		this.shadowRoot.append(styleLink, wrapper);
+		this.shadowRoot.append(wrapper);
 	}
 }
 

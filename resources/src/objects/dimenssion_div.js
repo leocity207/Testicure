@@ -1,3 +1,5 @@
+import Utils from "../utils";
+
 export default class DimensionDiv extends HTMLElement {
 	constructor() {
 		super();
@@ -14,12 +16,11 @@ export default class DimensionDiv extends HTMLElement {
 		content.classList.add('choices');
 		content.innerHTML = `<slot></slot>`;
 
-		const styleLink = document.createElement('link');
-		styleLink.setAttribute('rel', 'stylesheet');
-		styleLink.setAttribute('href', '/styles/dimension.css');
+		Utils.AddCSS(this.shadowRoot,"dimension.css");
+		Utils.AddCSS(this.shadowRoot,"common.css");
 
 		container.append(title, content);
-		this.shadowRoot.append(styleLink, container);
+		this.shadowRoot.append(container);
 	}
 }
 

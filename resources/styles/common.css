@@ -1,0 +1,27 @@
+button {
+	padding: 6px 10px;
+	margin: 5px;
+	border: 1px solid #888;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: #f0f0f0;
+	transition: background 0.2s ease;
+}
+
+button:hover {
+	background-color: #ddd;
+}
+
+.save-btn {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	z-index: 999;
+	background-color: #4CAF50;
+	color: white;
+}
+
+.add-folder-btn, .add-req-btn, .add-subfolder-btn {
+	font-size: 0.85rem;
+	margin-left: 1rem;
+}

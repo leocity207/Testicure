@@ -1,3 +1,5 @@
+import Utils from "../utils";
+
 export default class CampaignDiv extends HTMLElement {
 	constructor() {
 		super();
@@ -22,9 +24,8 @@ export default class CampaignDiv extends HTMLElement {
 		content.classList.add('content');
 		content.innerHTML = `<slot></slot>`;
 
-		const styleLink = document.createElement('link');
-		styleLink.rel = 'stylesheet';
-		styleLink.href = '/styles/campaign.css';
+		Utils.AddCSS(this.shadowRoot,"campaign.css");
+		Utils.AddCSS(this.shadowRoot,"common.css");
 
 		header.addEventListener('click', () => {
 			wrapper.classList.toggle('collapsed');
@@ -33,7 +34,7 @@ export default class CampaignDiv extends HTMLElement {
 		});
 
 		wrapper.append(header, content);
-		this.shadowRoot.append(styleLink, wrapper);
+		this.shadowRoot.append(wrapper);
 	}
 }
 
