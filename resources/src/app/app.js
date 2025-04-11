@@ -4,10 +4,8 @@ class App extends HTMLDivElement {
 		this.classList.add("app");
 		this.dataset.name = name;
 
-		this.m_icon = document.createElement("iframe");
+		this.m_icon = document.createElement("img");
 		this.m_icon.src = './image/' + icon;
-		this.m_icon.width = '100%';
-		this.m_icon.height = '100%';
 
 		this.attachShadow({ mode: "open" });
 		this.m_content_node = document.createElement("div");

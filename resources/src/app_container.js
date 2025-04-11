@@ -19,7 +19,7 @@ class App_Container extends HTMLDivElement {
 		
 		const style = document.createElement("link");
 		style.rel = "stylesheet";
-		style.href = "style/app-container.css"; // Adjust the path to your CSS file
+		style.href = "styles/app-container.css"; // Adjust the path to your CSS file
 		this.shadowRoot.appendChild(style);
 	}
 
